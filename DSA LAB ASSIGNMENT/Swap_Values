@@ -1,0 +1,21 @@
+#include <stdio.h>
+void swap_values(int *a,int *b){
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+    printf("A= %d",*a);
+    printf("B= %d",*b);
+}
+int main(){
+    int a,b;
+    printf("A= ");
+    scanf("%d",&a);
+    printf("B= ");
+    scanf("%d",&b);
+    int *ptr=&a;
+    int *ptr2=&b;
+    swap_values(ptr,ptr2);
+    
+    return 0;
+    }
