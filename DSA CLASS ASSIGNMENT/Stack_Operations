@@ -1,0 +1,78 @@
+#include <stdio.h>
+struct stack{
+    int top;
+    int arr[10];
+};
+int a;
+struct stack s;
+int isempty(){
+    if(s.top==-1)
+        return 1;
+    else
+        return 0;
+}
+int isfull(){
+    if(s.top==9)
+        return 1;
+    else
+        return 0;
+}
+int pop(){
+    if(isempty()==1)
+        printf("Underflow");
+    else{
+        printf("the popped element is %d",s.arr[s.top]);
+        s.top--;}
+}
+int push(){
+    int a;
+    if(isfull()==1)
+        printf("Overflow");
+    else{
+        s.top++;
+        printf("Enter element: ");
+        scanf("%d",&s.arr[s.top]);}}
+        
+int traverse(){
+    if(isempty()==1)
+        printf("Underflow");
+    else{
+        for(int i=s.top;i>=0;i--){
+            printf("%d",s.arr[i]);
+    }}
+}
+int peek(){
+    if(isempty()==1)
+        printf("Underflow");
+    else
+        printf("%d",s.arr[s.top]);
+}
+int main(){
+    s.top=-1;
+    int flag=0,a;
+    while(flag==0){
+        printf("What operation do u want to implement on Stack? \nPress: \n 1.Push element \n 2.Pop element\n 3.Peek \n 4.Traverse\n 5.For exit\n");
+        scanf("%d",&a);
+        switch(a){
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                peek();
+                break;
+            case 4:
+                traverse();
+                break;
+            case 5:
+                flag=1;
+                break;
+        }
+        if(flag==1){
+            break;}
+            
+    return 0;
+    
+}}
