@@ -48,7 +48,7 @@ int main(){
             if(s.top!=-1)
                 pop();}
         else{
-            while(s.top!=-1 && priority(s.arr[s.top])>=priority(exp[i])){
+            while(s.top!=-1 && priority(s.arr[s.top])>=priority(exp[i]) && exp[i]!='$'){
                 printf("%c",s.arr[s.top]);
                 pop();
             }
