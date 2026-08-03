@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+struct stack{
+int arr[10];
+int top;
+};
+struct stack s;
+int isempty(){
+    if(s.top==-1){
+        return 1;}
+    else
+        return 0;
+    }
+int isfull(){
+    if(s.top==9){
+        return 1;}
+    else
+        return 0;
+    }
+
+
+int push(a){
+    if(isfull()==1){
+        printf("Stack is full!!");
+    }
+    else{
+        s.top++;
+        s.arr[s.top]=a;
+    }
+    }
+int pop(){
+    if(isempty()==1){
+        printf("Stack is empty!!");
+    }
+    else{
+        s.top--;
+    }}
+int main(){
+    s.top=-1;
+    int flag;
+    printf("Enter String: ");
+    scanf("%s",s.arr);
+    int x=strlen(s.arr);
+    for(int i=0;i<x;i++){
+        if(s.arr[i]=='('||'{'||'['){
+            push(s.arr[i]);}
+        else{
+            char z=s.arr[i];
+            pop(s.arr[i]);
+                if(z=='[' && s.arr[i-1]==']')
+                    flag=1;
+                if(z=='[' && s.arr[i-1]==']')
+                    flag=1;
+                if(z=='[' && s.arr[i-1]==']')
+                    flag=1;
+                else
+                    flag=0;
+                }}
+        if(flag==1){
+            printf("Balanced")
+        else
+            printd("Unbalanced")
+        }
