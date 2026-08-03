@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+struct stack{
+    int top;
+    char arr[50];
+};
+struct stack s;
+int length(){
+    int i=0,size=0;
+    while(s.arr[i]!='\0'){
+        i++;
+        size++;
+    }
+    return size;
+}
+int isempty(){
+    if(s.top==-1){
+        return 1;}
+    else{
+        return 0;
+    }
+}
+int traverse(){
+    if(isempty()==1){
+        printf("Stack is empty");
+    }
+    else{
+        for(int i=length()-2;i>=0;i--){
+            printf("%c",s.arr[i]);
+        }
+    }}
+int main(){
+    s.top=-1;
+    printf("Enter String: ");
+    fgets(s.arr,50,stdin);
+    s.top=length()-2;
+    traverse();
+    return 0;
+    }
