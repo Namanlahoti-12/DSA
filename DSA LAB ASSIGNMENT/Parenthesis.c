@@ -35,13 +35,21 @@ int pop(){
     else{
         s.top--;
     }}
+int length(char str[]){
+    int i=0,size=0;
+    while(str[i]!='\0'){
+        i++;
+        size++;
+    }
+    return size;
+}
 int main(){
     s.top=-1;
     int flag;
     char str[20];
     printf("Enter String: ");
     scanf("%s",str);
-    size_t x=strlen(str);
+    int x=length(str);
     for(int i=0;i<x;i++){
         if(str[i]=='(' ||str[i]=='{'||str[i]=='['){
             push(str[i]);}
