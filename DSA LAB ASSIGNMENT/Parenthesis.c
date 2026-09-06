@@ -63,8 +63,11 @@ int main(){
                     flag=1;}
                 else
                     flag=0;
+                    break;
                 pop();
                 }}
+        if(!isempty())
+            flag=0;
         if(flag==1)
             printf("Balanced");
         else
