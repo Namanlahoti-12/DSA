@@ -61,9 +61,9 @@ int main(){
                     flag=1;
                 else if((z=='}') && (s.arr[s.top]=='{')){
                     flag=1;}
-                else
+                else{
                     flag=0;
-                    break;
+                    break;}
                 pop();
                 }}
         if(!isempty())
@@ -72,5 +72,4 @@ int main(){
             printf("Balanced");
         else
             printf("Unbalanced");
-
 return 0;}
