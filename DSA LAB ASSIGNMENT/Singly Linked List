@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct sll {
+    int data;
+    struct sll *next;
+};
+typedef struct sll n;
+n*create_node(){
+    n*new_node;
+    int no;
+    printf("Enter Data: ");
+    scanf("%d",&no);
+    new_node=(n*)malloc(sizeof(n));
+    new_node->data=no;
+    new_node->next=NULL;
+    return new_node;
+}
+n*insert_end(n*head,n*new_node){
+    if(head!=NULL){
+        n*tp=head;
+        while(tp->next!=NULL){
+            tp=tp->next;
+        }
+        tp->next=new_node;
+        new_node->next=NULL;
+        return head;
+        }
+    else
+        printf("NO LINKED LIST EXISTS \n");
+    }
+n*insert_beg(n*head,n*new_node){
+    if(head!=NULL){
+        new_node->next=head;
+        head=new_node;
+        return head;
+    }
+    else
+        printf("Linked List doesnot exist");
+}
+n*insert_after(n*head,n*new_node){
+    if(head==NULL)
+        printf("LINKED LIST DOESNOT EXIST \n");
+    else{
+        int key;
+        printf("Enter Key");
+        scanf("%d",&key);
+        n*tp=head;
+        while(tp->next!=NULL && tp->data!=key)
+            tp=tp->next;
+        if(tp->data==key){
+            new_node->next=tp->next;
+            tp->next=new_node;}
+        else
+            printf("Key doesnot exist");
+        return head;
+        }}
+n*delete_end(n*head){
+    if(head!=NULL){
+        if(head->next!=NULL){
+            n*tp=head,*tmp;
+            while(tp->next!=NULL){
+                tmp=tp;
+                tp=tp->next;
+            }
+            tmp->next=NULL;
+            free(tp);
+            return tmp;}
+        else
+            free(head);
+    }
+    else
+        printf("Linked list doesnot exist");
+}
+n*delete_beg(n*head){
+    if(head!=NULL){
+        n*tmp=head;
+        head=head->next;
+        free(tmp);
+        return head;
+    }
+    else
+        printf("Linked list doesnot exist");
+}
+n*delete_after(n*head){
+        if(head==NULL)
+        printf("LINKED LIST DOESNOT EXIST \n");
+        else{
+            int key;
+            printf("Enter Key");
+            scanf("%d",&key);
+            n*tp=head,*tmp;
+            while(tp->next!=NULL && tp->data!=key)
+                tp=tp->next;
+            if(tp->data==key){
+                tmp=tp->next;
+                tp->next=(tp->next)->next;
+                free(tmp);
+                }
+            else
+                printf("Key doesnot exist");
+            }}
+n*traverse(n*head){
+    if(head!=NULL){
+        n*tp=head;
+        while(tp->next!=NULL){
+            printf("%d, ",tp->data);
+            tp=tp->next;
+        }
+        printf("%d \n",tp->data);}
+    else
+        printf("LL is empty");
+}
+
+
+int main(){
+n*head=NULL;
+n*new_node;
+head=create_node();
+int flag=0;
+while(flag!=1){
+    printf("WHAT U WANT TO DO??\n 1. Insert at end \n 2. Insert at beg \n 3. Insert after \n 4. Delete at end \n 5. Delete at beg \n 6. Delete after \n 7. Traverse \n 8. Exit \n");
+    int a;
+    scanf("%d",&a);
+    switch(a){
+        case 1:
+            head=insert_end(head,create_node());
+            break;
+        case 2:
+            head=insert_beg(head,create_node());
+            break;
+        case 3:
+            head=insert_after(head,create_node());
+            break;
+        case 4:
+            delete_end(head);
+            break;
+        case 5:
+            head=delete_beg(head);
+            break;
+        case 6:
+            delete_after(head);
+            break;
+        case 7:
+            traverse(head);
+            break;
+        case 8:
+            flag=1;
+            break;
+
+    }
+}
+return 0;
+}
