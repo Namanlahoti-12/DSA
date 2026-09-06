@@ -60,9 +60,7 @@ n*insert_after(n*head,n*new_node){
                     new_node->next=tp->next;
                     tp->next->pre=new_node->pre;
                     tp->next=new_node;
-                    new_node->pre=tp;
-
-                }
+                    new_node->pre=tp;}
             }
         else
             printf("Key doesnot exist");
@@ -106,11 +104,14 @@ n*delete_after(n*head){
             while(tp->next!=NULL && tp->data!=key)
                 tp=tp->next;
             if(tp->data==key){
-                if(tp->next!=NULL){
+                if(tp->next!=NULL && tp->next->next!=NULL){
                     tmp=tp->next;
                     tp->next=(tp->next)->next;
                     tmp->next->pre=tp;
                     free(tmp);}
+                else if(tp->next->next==NULL)
+                    delete_end(head);
+
                 else
                     printf("There is no next element\n");
                 }
