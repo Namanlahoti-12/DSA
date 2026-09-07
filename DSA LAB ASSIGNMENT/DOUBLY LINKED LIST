@@ -199,5 +199,7 @@ while(flag!=1){
         case 10:
             flag=1;
             break;
+        default:
+            printf("INVALID INPUT!!\n");
 }}
 return 0;}
