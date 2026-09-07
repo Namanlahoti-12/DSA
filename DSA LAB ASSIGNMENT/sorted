@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct sll{
+    int data;
+    struct sll *next;
+};
+struct sll2{
+    int data;
+    struct sll2 *next;
+};
+struct merged_sll{
+    int data;
+    struct merged_sll *next;
+};
+typedef struct sll n;
+typedef struct sll2 n2;
+typedef struct merged_sll merged_n;
+n*create_node(){
+    n*new_node;
+    int no;
+    printf("Enter Data: ");
+    scanf("%d",&no);
+    new_node=(n*)malloc(sizeof(n));
+    new_node->data=no;
+    new_node->next=NULL;
+    new_node->pre=NULL;
+    return new_node;
+}
+n2*create_node(){
+    n2*new_node;
+    int no;
+    printf("Enter Data: ");
+    scanf("%d",&no);
+    new_node=(n2*)malloc(sizeof(n2));
+    new_node->data=no;
+    new_node->next=NULL;
+    new_node->pre=NULL;
+    return new_node;
+}
+n*insert_end(n*head,n*new_node){
+    if(head!=NULL){
+        n*tp=head;
+        while(tp->next!=NULL){
+            tp=tp->next;
+        }
+        tp->next=new_node;
+        new_node->pre=tp;
+        new_node->next=NULL;
+        }
+    else
+        head=new_node;
+    return head;
+    }
+n2*insert_end(n*head,n*new_node){
+    if(head!=NULL){
+        n2*tp=head;
+        while(tp->next!=NULL){
+            tp=tp->next;
+        }
+        tp->next=new_node;
+        new_node->pre=tp;
+        new_node->next=NULL;
+        }
+    else
+        head=new_node;
+    return head;
+    }
