@@ -1,0 +1,22 @@
+#include <stdio.h>
+int binary_search(int low, int high, int a[],int key){
+    int mid=(low+high)/2;
+    if(a[mid]>key){
+        return binary_search(low,mid-1,a,key);
+        }
+    if(a[mid]<key){
+        return binary_search(mid+1,high,a,key);
+        }
+    if(a[mid]==key)
+        return mid+1;
+    else
+        printf("key not found");
+}
+int main(){
+    int a[]={2,5,8,12,16,23,38,56,72,91};
+    int key;
+    printf("Enter key: ");
+    scanf("%d",&key);
+    int low=0,high=10;
+    printf("%d",binary_search(low,high,a,key));
+}
