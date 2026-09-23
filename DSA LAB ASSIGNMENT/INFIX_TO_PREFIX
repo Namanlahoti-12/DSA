@@ -70,10 +70,11 @@ int main(){
         }
         i++;
             }
-    ans[k++]=s.arr[s.top];
-    pop();
-    int l2=len(ans);
-    for(int i=l2;i>=0;i--){
+    while(s.top!=-1){
+        ans[k++]=s.arr[s.top];
+        pop();}
+    for(int i=k-1;i>=0;i--){
         printf("%c",ans[i]);
     }
     return 0;}
+
