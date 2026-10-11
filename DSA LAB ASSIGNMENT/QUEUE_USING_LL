@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct sll {
+    int data;
+    struct sll *next;
+};
+typedef struct sll n;
+
+n* create_node() {
+    n* new_node;
+    int no;
+    printf("Enter Data: ");
+    scanf("%d", &no);
+    new_node = (n*)malloc(sizeof(n));
+    new_node->data = no;
+    new_node->next = NULL;
+    return new_node;
+}
+
+n* enqueue(n* head, n* new_node) {
+    if (head == NULL) {
+        head = new_node;
+        return head;
+    } else {
+        n* tp = head;
+        while (tp->next != NULL) {
+            tp = tp->next;
+        }
+        tp->next = new_node;
+        new_node->next = NULL;
+        return head;
+    }
+}
+
+n* dequeue(n* head) {
+    if (head != NULL) {
+        n* tmp = head;
+        printf("Dequeued element: %d\n", head->data);
+        head = head->next;
+        free(tmp);
+        return head;
+    } else {
+        printf("Queue Underflow\n");
+        return NULL;
+    }
+}
+
+void peek(n* head) {
+    if (head != NULL) {
+        printf("Front element is: %d\n", head->data);
+    } else {
+        printf("Queue is empty\n");
+    }
+}
+
+void traverse(n* head) {
+    if (head != NULL) {
+        n* tp = head;
+        while (tp->next != NULL) {
+            printf("%d, ", tp->data);
+            tp = tp->next;
+        }
+        printf("%d \n", tp->data);
+    } else {
+        printf("Queue is empty\n");
+    }
+}
+
+int main() {
+    n* head = NULL;
+    int flag = 0;
+    while (flag != 1) {
+        printf("WHAT U WANT TO DO??\n 1. Enqueue \n 2. Dequeue \n 3. Peek/Front \n 4. Display \n 5. Exit \n");
+        int a;
+        scanf("%d", &a);
+        switch (a) {
+            case 1:
+                head = enqueue(head, create_node());
+                break;
+            case 2:
+                head = dequeue(head);
+                break;
+            case 3:
+                peek(head);
+                break;
+            case 4:
+                traverse(head);
+                break;
+            case 5:
+                flag = 1;
+                break;
+        }
+    }
+    return 0;
+}
