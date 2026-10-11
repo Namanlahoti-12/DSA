@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct sll {
+    int data;
+    struct sll *next;
+};
+typedef struct sll n;
+
+n* create_node() {
+    n* new_node;
+    int no;
+    printf("Enter Data: ");
+    scanf("%d", &no);
+    new_node = (n*)malloc(sizeof(n));
+    new_node->data = no;
+    new_node->next = NULL;
+    return new_node;
+}
+
+n* push(n* top, n* new_node) {
+    if (top == NULL) {
+        top = new_node;
+        return top;
+    } else {
+        new_node->next = top;
+        top = new_node;
+        return top;
+    }
+}
+
+n* pop(n* top) {
+    if (top != NULL) {
+        n* tmp = top;
+        printf("Popped element: %d\n", top->data);
+        top = top->next;
+        free(tmp);
+        return top;
+    } else {
+        printf("Stack Underflow\n");
+        return NULL;
+    }
+}
+
+void peek(n* top) {
+    if (top != NULL) {
+        printf("Top element is: %d\n", top->data);
+    } else {
+        printf("Stack is empty\n");
+    }
+}
+
+void traverse(n* top) {
+    if (top != NULL) {
+        n* tp = top;
+        while (tp->next != NULL) {
+            printf("%d, ", tp->data);
+            tp = tp->next;
+        }
+        printf("%d \n", tp->data);
+    } else {
+        printf("Stack is empty\n");
+    }
+}
+
+int main() {
+    n* top = NULL;
+    int flag = 0;
+    while (flag != 1) {
+        printf("WHAT U WANT TO DO??\n 1. Push \n 2. Pop \n 3. Peek \n 4. Display \n 5. Exit \n");
+        int a;
+        scanf("%d", &a);
+        switch (a) {
+            case 1:
+                top = push(top, create_node());
+                break;
+            case 2:
+                top = pop(top);
+                break;
+            case 3:
+                peek(top);
+                break;
+            case 4:
+                traverse(top);
+                break;
+            case 5:
+                flag = 1;
+                break;
+        }
+    }
+    return 0;
+}
